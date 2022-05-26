@@ -5,7 +5,7 @@
 ## Table of contents:
 
 - [The aim of the project](#the-aim-of-the-project)
-- [What is our motivation?](#motivation)
+- [What is our motivation?](#what-is-our-motivation)
 - [Features](#features)
 - [Technologies](#technologies)
 - [Documentation](#documentation)
@@ -41,7 +41,7 @@ Also this is our project for graduate [Python od podstaw](https://sdacademy.pl/k
 - SQLite 3,
 - Bootstrap,
 
-## Doceumentation
+## Documentation
 
 - [Python 3](https://docs.python.org/3/)
 - [Django](https://docs.djangoproject.com/en/4.0/)
