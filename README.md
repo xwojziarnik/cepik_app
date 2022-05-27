@@ -7,10 +7,9 @@
 - [The aim of the project](#the-aim-of-the-project)
 - [What is our motivation?](#what-is-our-motivation)
 - [Features](#features)
-- [Technologies](#technologies)
-- [Documentation](#documentation)
+- [Technologies & Documentation](#technologies--documentation)
 - [Team](#team)
-- [Installation & setup](#installation--setup)
+- [Installation](#installation)
 - [Run](#run)
 
 
@@ -30,18 +29,11 @@ Also this is our project for graduate [Python od podstaw](https://sdacademy.pl/k
 
 ## Features
 
-- [] Listing interesting facts on home page,
-- [] CRUD on vehicles registered in Poland,
-- [] CRUD pn driving licences registered in Poland,
+- [ ] Listing interesting facts on home page,
+- [ ] CRUD on vehicles registered in Poland,
+- [ ] CRUD on driving licences registered in Poland,
 
-## Technologies
-
-- Python 3,
-- Django Framework,
-- SQLite 3,
-- Bootstrap,
-
-## Documentation
+## Technologies & Documentation
 
 - [Python 3](https://docs.python.org/3/)
 - [Django](https://docs.djangoproject.com/en/4.0/)
@@ -50,7 +42,7 @@ Also this is our project for graduate [Python od podstaw](https://sdacademy.pl/k
 
 ## Team
 <details>
-<summary>Click to get links and visit us on LinkedIn!</summary>
+<summary>Click to get links and say hi on LinkedIn!</summary>
 
 - [Dawid Gapiński](https://www.linkedin.com/in/dgapinski)
 - [Łukasz Kacik](https://www.linkedin.com/in/%C5%82ukasz-kacik-093691224/)
@@ -59,11 +51,12 @@ Also this is our project for graduate [Python od podstaw](https://sdacademy.pl/k
 
 </details>
 
-## Installation & setup
+## Installation
 
 1.Installation:
 
-- Python:
+<details>
+<summary>Python:</summary>
 
 Visit https://www.python.org/downloads/ and type which installing package you prefer (by your operating system) and download the package.
 
@@ -80,9 +73,12 @@ For Windows:
 ```
 python --version
 ```
+</details>
 
+<details>
+<summary>Virtual environment:</summary>
 
-- [Virtual environment](https://docs.python.org/3/library/venv.html):
+[More info about venv](https://docs.python.org/3/library/venv.html)
 
 Open terminal/command prompt and create directory where you will create a django project using commands below:
 
@@ -97,8 +93,10 @@ source <virtualenv_name>/bin/activate                # to activate virtualenv on
 
 (<virtualenv_name>) <username>@<actual_directory> %  # after above you should see the (<virtualenv_name>). This line appears on MacOS.
 ```
+</details>
 
-- Django:
+<details>
+<summary>Django:</summary>
 
 If you did above tutorials, now you should have scheme of your files like:
 
@@ -122,6 +120,7 @@ python -m django --version      # on Windows
 ```
 
 If Django is installed, you should see the version of your installation. If it isn’t, you’ll get an error telling “No module named django”.
+</details>
 
 Perfect! Now, it's time to last episode.
 
@@ -129,7 +128,9 @@ Perfect! Now, it's time to last episode.
 
 We've seen how to run venv. Keep that running!
 
-Now, we can create new project and apps in our project, like this:
+
+<details>
+<summary>Now, we can create new project and apps in our project, like this:</summary>
 
 ```
 django-admin startproject <project_name> .      # Pro-tip: write a dot in the end of the command to create project IN CURRENT directory. Otherwise Django will create subdirectory and then will create project files in subdirectory.
@@ -166,7 +167,7 @@ Desktop/
             urls.py
             asgi.py
             wsgi.py
-        polls/
+        <app_name>/
             __init__.py
             admin.py
             apps.py
@@ -182,8 +183,11 @@ Now, you can check if everything is correct. In this case type command:
 python3 manage.py runserver     # using MacOS
 python manage.py runserver      # using Windows
 ```
+</details>
 
-.. or we can simply clone this repo, and see if it's working on our machine (in case we did everything above count creating virtualenv):
+<details>
+<summary>.. or we can simply clone this repo, and see if it's working on our machine (in case we did everything above count creating virtualenv):</summary>
+
 ```
 git init                                                # to initialize repository
 git clone https://github.com/xwojziarnik/cepik_app      # to clone this repository into your local machine
@@ -191,5 +195,6 @@ git clone https://github.com/xwojziarnik/cepik_app      # to clone this reposito
 python3 manage.py runserver     # using MacOS
 python manage.py runserver      # using Windows
 ```
+</details>
 
 And that's it! Great job!
