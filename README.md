@@ -53,8 +53,6 @@ Also this is our project for graduate [Python od podstaw](https://sdacademy.pl/k
 
 ## Installation
 
-1.Installation:
-
 <details>
 <summary>Python:</summary>
 
@@ -122,6 +120,33 @@ python -m django --version      # on Windows
 If Django is installed, you should see the version of your installation. If it isn’t, you’ll get an error telling “No module named django”.
 </details>
 
+<details>
+<summary>All packages included in requirements.txt:</summary>
+
+<details>
+<summary>First option:</summary>
+
+After clone this repo, type command:
+```
+pip3 install -r requirements.txt        # on MacOS
+pip install -r requirements.txt         # on Windows
+```
+
+</details>
+
+<details>
+<summary>Second option:</summary>
+
+Open file ```requirements.txt``` and type command with every package name:
+```
+pip3 install <package_name>     # on MacOS
+pip install <package_name>      # on Windows
+```
+
+</details>
+
+</details>
+
 Perfect! Now, it's time to last episode.
 
 ##  Run
@@ -178,7 +203,11 @@ Desktop/
             views.py
 ```
 
-Now, you can check if everything is correct. In this case type command:
+Now, you can check if everything is correct. In this case:
+
+- check if you are in right directory (the same, where manage.py exists)
+- type command:
+
 ```
 python3 manage.py runserver     # using MacOS
 python manage.py runserver      # using Windows
