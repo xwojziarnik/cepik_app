@@ -7,5 +7,5 @@ from django import forms
 class SignUpForm(UserCreationForm):
     voivodeship = forms.CharField()
     pass
-    #voivodeship = models.CharField(choices=MyModel.Voivodeship.choices)
+    # voivodeship = models.CharField(choices=MyModel.Voivodeship.choices)
 
