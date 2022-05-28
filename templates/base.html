@@ -20,9 +20,15 @@
     </div>
     {% endfor %}
     {% endif %}
-    <li>
+    {% if user.is_authenticated %}
+    <p>
+        <a class="nav-link" href="{% url 'logout' %}">logout</a>
+    </p>
+    {% else %}
+    <p>
         <a class="nav-link" href="{% url 'loginAuth' %}">Login</a>
-    </li>
+    </p>
+    {% endif %}
     {% block body %}{% endblock %}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"

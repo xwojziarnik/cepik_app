@@ -25,13 +25,19 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, ("Success Login."))
+            messages.success(request, "Success Login.")
             return redirect('index')
         else:
-            messages.success(request, ("Error Logging in, try again..."))
+            messages.success(request, "Error Logging in, try again...")
             return redirect('loginAuth')
     else:
         return render(request, 'authenticate/login.html', {})
+
+
+def logout_user(request):
+    logout(request)
+    messages.success(request, "You were logged out.")
+    return redirect('loginAuth')
 
 
 class AppListView(ListView):
