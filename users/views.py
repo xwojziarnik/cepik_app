@@ -2,6 +2,9 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView
 from users.forms import SignUpForm
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 
 class SignUp(CreateView):
@@ -13,6 +16,21 @@ class SignUp(CreateView):
 class UserLoginView(LoginView):
     template_name = 'login.html'
     success_url = reverse_lazy('index')
+
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+        else:
+            messages.success(request, ("Error Logging in, try again..."))
+            return redirect('loginAuth')
+    else:
+        return render(request, 'authenticate/login.html', {})
 
 
 class AppListView(ListView):
