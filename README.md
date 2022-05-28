@@ -124,7 +124,7 @@ If Django is installed, you should see the version of your installation. If it i
 <summary>All packages included in requirements.txt:</summary>
 
 <details>
-<summary>First option:</summary>
+<summary>First option (prefered):</summary>
 
 After clone this repo, type command:
 ```
@@ -155,67 +155,7 @@ We've seen how to run venv. Keep that running!
 
 
 <details>
-<summary>Now, we can create new project and apps in our project, like this:</summary>
-
-```
-django-admin startproject <project_name> .      # Pro-tip: write a dot in the end of the command to create project IN CURRENT directory. Otherwise Django will create subdirectory and then will create project files in subdirectory.
-```
-Let's check what upper command created:
-```
-Desktop/
-    <directory_name>/
-        <virtualenv_name>
-        manage.py
-        <project_name>/
-            __init__.py
-            settings.py
-            urls.py
-            asgi.py
-            wsgi.py
-```
-
-Now all we need is our first app. So we have to type command:
-```
-python3 manage.py startapp <app_name>       # on MacOS
-python manage.py startapp <app_name>        # on Windows
-```
-
-Now, our scheme of files looks something like below:
-```
-Desktop/
-    <directory_name>/
-        <virtualenv_name>
-        manage.py
-        <project_name>/
-            __init__.py
-            settings.py
-            urls.py
-            asgi.py
-            wsgi.py
-        <app_name>/
-            __init__.py
-            admin.py
-            apps.py
-            migrations/
-                __init__.py
-            models.py
-            tests.py
-            views.py
-```
-
-Now, you can check if everything is correct. In this case:
-
-- check if you are in right directory (the same, where manage.py exists)
-- type command:
-
-```
-python3 manage.py runserver     # using MacOS
-python manage.py runserver      # using Windows
-```
-</details>
-
-<details>
-<summary>.. or we can simply clone this repo, and see if it's working on our machine (in case we did everything above count creating virtualenv):</summary>
+<summary>Now we can simply clone this repo, and see if it's working on our machine (in case we did everything above count creating virtualenv):</summary>
 
 ```
 git init                                                # to initialize repository
