@@ -1,2 +1,7 @@
 .idea
 venv
+cepik_app/__pycache__
+users/__pycache__
+viewer/migrations/__pycache__
+viewer/__pycache__
+db.sqlite3
