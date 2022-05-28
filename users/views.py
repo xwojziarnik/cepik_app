@@ -14,7 +14,7 @@ class SignUp(CreateView):
 
 
 class UserLoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'authenticate/login.html'
     success_url = reverse_lazy('index')
 
 
