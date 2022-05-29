@@ -93,10 +93,11 @@
         <div class="container" name="alert">
             {% if messages %}
             {% for message in messages %}
-
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                {{ message }}
-                <button type="button" class="btn btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="alert alert-success d-flex align-items-center" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                <div>
+                    {{ message }}
+                </div>
             </div>
             {% endfor %}
             {% endif %}
