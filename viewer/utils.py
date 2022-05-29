@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import requests
-from API_connect.models import Vehicle, Driving_licenses
+from viewer.models import Vehicle, Driving_licenses
 import time
 
 
