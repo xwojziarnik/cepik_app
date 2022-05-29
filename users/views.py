@@ -1,6 +1,5 @@
-from django.contrib.auth.views import LoginView
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView
 from users.forms import SignUpForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
@@ -10,12 +9,7 @@ from django.contrib import messages
 class SignUp(CreateView):
     template_name = 'registration/sign_up.html'
     form_class = SignUpForm
-    success_url = reverse_lazy('login')
-
-
-class UserLoginView(LoginView):
-    template_name = 'authenticate/login.html'
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('loginAuth')
 
 
 def login_user(request):
@@ -26,7 +20,7 @@ def login_user(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Zalogowano pomyślnie.")
-            return redirect('index')
+            return redirect('home')
         else:
             messages.success(request, "Błędny login i/lub hasło")
             return redirect('loginAuth')
@@ -36,9 +30,5 @@ def login_user(request):
 
 def logout_user(request):
     logout(request)
-    messages.success(request, "You were logged out.")
+    messages.success(request, "Wylogowano pomyślnie.")
     return redirect('loginAuth')
-
-
-class AppListView(ListView):
-    template_name = 'index.html'

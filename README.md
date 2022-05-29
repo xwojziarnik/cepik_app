@@ -166,4 +166,14 @@ python manage.py runserver      # using Windows
 ```
 </details>
 
+<details>
+<summary>Get API from CEPiK into database</summary>
+
+- Run your terminal and type:
+```
+exec(open('viewer/utils.py').read())        # run utils.py file
+download_data()                             # run func
+```
+</details>
+
 And that's it! Great job!
