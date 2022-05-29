@@ -24,6 +24,4 @@ VOIVODESHIPS_CHOICES = (
 
 
 class SignUpForm(UserCreationForm, forms.Form):
-    voivodeship_field = forms.ChoiceField(choices=VOIVODESHIPS_CHOICES)
-
-
+    województwo = forms.ChoiceField(choices=VOIVODESHIPS_CHOICES)

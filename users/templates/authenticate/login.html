@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
-{% block title %} Login {% endblock %}
+{% block title %} Zaloguj się {% endblock %}
 {% block content %}
-<h2>Login</h2>
+<h2>Zaloguj się</h2>
 <form method="post">
     {% csrf_token %}
     <form>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <label for="exampleInputEmail1" class="form-label">Nazwa użytkownika</label>
             <input type="text" class="form-control" name="username">
         </div>
         <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <label for="exampleInputPassword1" class="form-label">Hasło</label>
             <input type="password" class="form-control" name="password">
         </div>
-
-
-        <button type="submit" class="btn btn-success">LoginAuth</button>
+        <p>Jeśli nie masz jeszcze konta, kliknij <a href="/sign-up">tutaj.</a></p>
+        <button type="submit" class="btn btn-success">Zaloguj</button>
     </form>
     {% endblock %}
