@@ -39,5 +39,3 @@ class Driving_licenses(models.Model):
 
     def __str__(self):
         return f'{self.data_uprawnien}-{self.wojewodztwo}-{self.plec}-{self.wiek}-{self.ilosc}.'
-
-
