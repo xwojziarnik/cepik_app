@@ -22,5 +22,4 @@ admin.site.register(Voivodeship)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('viewer.urls')),
-    path('', include('API_connect.urls')),
 ]
