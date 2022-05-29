@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 class SignUp(CreateView):
-    template_name = 'sign_up.html'
+    template_name = 'registration/sign_up.html'
     form_class = SignUpForm
     success_url = reverse_lazy('login')
 
@@ -25,10 +25,10 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, "Success Login.")
+            messages.success(request, "Zalogowano pomyślnie.")
             return redirect('index')
         else:
-            messages.success(request, "Error Logging in, try again...")
+            messages.success(request, "Błędny login i/lub hasło")
             return redirect('loginAuth')
     else:
         return render(request, 'authenticate/login.html', {})
