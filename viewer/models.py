@@ -1,6 +1,13 @@
 from django.db import models
 
 
+class Voivodeship(models.Model):
+    name = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
 class Vehicle(models.Model):
     id_cepik = models.IntegerField(default=0)
     marka = models.CharField(max_length=45, null=True)
