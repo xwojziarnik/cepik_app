@@ -5,4 +5,3 @@ users/__pycache__
 users/migrations/__pycache__
 viewer/migrations/__pycache__
 viewer/__pycache__
-db.sqlite3
