@@ -2,13 +2,15 @@ from django.db import models
 
 
 class Voivodeship(models.Model):
-    name = models.TextField()
+    wojewodztwo = models.CharField(max_length=45, null=True)
+    id_wojewodztwa = models.IntegerField(default=0, null=False)
 
     def __str__(self):
-        return self.name
+        return self.wojewodztwo
 
 
 class Vehicle(models.Model):
+    d = models.ManyToManyField
     id_cepik = models.IntegerField(default=0)
     marka = models.CharField(max_length=45, null=True)
     model = models.CharField(max_length=45, null=True)
