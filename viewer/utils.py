@@ -30,8 +30,8 @@ def download_data():
     """
     download data from API for all voivodeships.
     """
-    voivodeships = [  #'02', '04', '06', '08', '10', '12', '14', '16', '18', '20','22', '24','26', '28', '30',
-                     '32']  # list of voivodeships. Explanation in docstring.
+    voivodeships = ['02', '04', '06', '08', '10', '12', '14', '16', '18', '20',
+                    '22', '24','26', '28', '30', '32']  # list of voivodeships. Explanation in docstring.
     choose = input('type 1(vehicles) or 2(driving_licenses): ')
     if choose == '1':
         for voivo in voivodeships:
