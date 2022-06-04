@@ -16,6 +16,10 @@
 <p>Liczba miejsc: {{ data.liczba_miejsc }}</p>
 <p>Rodzaj paliwa: {{ data.rodzaj_paliwa }}</p>
 <p>Hak: {{ data.hak }}</p>
-<p>Kierownica po prawej: {{ data.kierownica_po_prawej }}</p>
-
+<p>Kierownica po prawej: {{ data.kierownica_po_prawej }}</p><br>
+<form action="/vehicles/{{data.id}}/update">
+    <input type="submit" value="Edytuj" />
+</form><form action="/vehicles/{{data.id}}/delete">
+    <input type="submit" value="Usuń" />
+</form>
 {% endblock %}
