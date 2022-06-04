@@ -15,7 +15,7 @@
 <p>Dopuszczalna masa całkowita: {{ data.dmc }}</p>
 <p>Liczba miejsc: {{ data.liczba_miejsc }}</p>
 <p>Rodzaj paliwa: {{ data.rodzaj_paliwa }}</p>
-<p>Hak: {{ data.hak }}</p>
+<p>Hak: {{ data.hak|yesno:"Na wyposażeniu, Brak, Null" }}</p>
 <p>Kierownica po prawej: {{ data.kierownica_po_prawej }}</p><br>
 
 <form action="/vehicles/{{data.id}}/update">

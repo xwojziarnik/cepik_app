@@ -4,11 +4,11 @@
 
 {% block content %}
 
-<p><h2>Lista Uprawnień</h2></p>
+<p><h2>Lista Uprawnień - statystyka:</h2></p>
 
 {% for data in object_list %}
 
-<p> {{ data.data_uprawnien }}-{{ data.id_wojewodztwa }}-{{ data.wojewodztwo }}-{{ data.plec }}-{{ data.wiek }}-{{ data.ilosc }} </p>
+<p>W miesiącu: {{ data.data_uprawnien }}, w województwie: {{ data.wojewodztwo }}, grupa kobiet/mężczyzn: {{ data.plec }}, mających lat: {{ data.wiek }}, uzyskała uprawnienia w ilości {{ data.ilosc }}.</p>
 
 {% endfor %}
 

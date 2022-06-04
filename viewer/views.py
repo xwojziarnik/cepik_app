@@ -86,4 +86,5 @@ class DrivingLicensesListView(ListView):
     template_name = 'driving_licenses.html'
     model = Driving_licenses
     paginate_by = 10
+    ordering = 'id_wojewodztwa', 'data_uprawnien'
 
