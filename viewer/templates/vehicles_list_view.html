@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
-{% block title %}list_view_vihicle{% endblock %}
+{% block title %}Lista pojazdów{% endblock %}
 
 {% block content %}
-<h2>Lista Pojazdów </h2>
+<p><h6>Jeśli chcesz:</h6></p>
+    <ul>
+    <li>Zobaczyć dokładne informacje jakiegoś pojazdu, wpisz jego nr id w adres przeglądarki. Na przykład: 127.0.0.1:8000/vehicles/1</li>
+    <li>Zaktualizować dane konkretnego pojazdu, dopisz jego nr id oraz /update/, np.: 127.0.0.1:8000/vehicles/1/update/</li>
+    <li>Usunąć konkretny pojazd, dopisz jego nr id oraz /delete/, np.: 127.0.0.1:8000/vehicles/1/delete/</li>
+    </ul>
 
+<p><h2>Lista Pojazdów</h2></p>
 
 {% for data in object_list %}
 
-<a href="{{data.id}}"> {{ forloop.counter }}.{{ data.marka }}-{{ data.model }}-{{ data.rodzaj_pojazdu }}</a><br/>
+<p></pr><a href="{{data.id}}"> {{ forloop.counter }}.{{ data.marka }}-{{ data.model }}-{{ data.rodzaj_pojazdu }}</a></p>
 
 {% endfor %}
 
