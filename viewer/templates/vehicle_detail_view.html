@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}list_view_vihicle{% endblock %}
+{% block title %}detail_view_vihicle{% endblock %}
 
 {% block content %}
 <h2>Dane pojazdu: </h2>
 
-{{ data.marka }} <br>
-{{ data.model }} <br>
-{{ data.wojewodztwo }} <br>
-{{ data.rodzaj_pojazdu }} <br>
-{{ data.pochodzenie_pojazdu }} <br>
-{{ data.rok_produkcji }} <br>
-{{ data.pojemnosc_skokowa }} <br>
-{{ data.dmc }} <br>
-{{ data.liczba_miejsc }} <br>
-{{ data.rodzaj_paliwa }} <br>
-{{ data.hak }} <br>
-{{ data.kierownica_po_prawej }}
+marka: {{ data.marka }} <br>
+model: {{ data.model }} <br>
+województwo: {{ data.wojewodztwo }} <br>
+rodzaj pojazdu:  {{ data.rodzaj_pojazdu }} <br>
+pochodzenie: {{ data.pochodzenie_pojazdu }} <br>
+rok produkcji: {{ data.rok_produkcji }} <br>
+pojemność skokowa: {{ data.pojemnosc_skokowa }} <br>
+dopuszczalna masa całkowita: {{ data.dmc }} <br>
+liczba miejsc:  {{ data.liczba_miejsc }} <br>
+paliwo:  {{ data.rodzaj_paliwa }} <br>
+hak:  {{ data.hak }} <br>
+kierownica po prawej: {{ data.kierownica_po_prawej }}
 
 {% endblock %}
