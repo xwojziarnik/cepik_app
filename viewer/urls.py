@@ -5,7 +5,7 @@ from viewer import crud
 
 urlpatterns = [
     path('', views.home, name='home'),
-    path('driving-licenses/', views.driving_licenses),
+    path('driving-licenses/', views.DrivingLicensesListView.as_view(), name='driving_licenses'),
     path('about/', views.about, name='about'),
     path('team/', views.team, name='team'),
     path('sign-up/', u.SignUp.as_view(), name='sign_up'),

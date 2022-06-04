@@ -1,7 +1,34 @@
 {% extends "base.html" %}
 
-{% block title %}Prawa jazdy{% endblock %}
+{% block title %}Lista pojazdów{% endblock %}
 
 {% block content %}
-<p>Tu będą się wyświetlały prawa jazdy.</p>
+
+<p><h2>Lista Uprawnień</h2></p>
+
+{% for data in object_list %}
+
+<p> {{ data.data_uprawnien }}-{{ data.id_wojewodztwa }}-{{ data.wojewodztwo }}-{{ data.plec }}-{{ data.wiek }}-{{ data.ilosc }} </p>
+
+{% endfor %}
+
+<div class="pagination">
+    {#  source of pagination   https://docs.djangoproject.com/en/4.0/topics/pagination/#}
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% endblock %}
