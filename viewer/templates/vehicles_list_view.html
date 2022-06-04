@@ -8,7 +8,7 @@
 
 {% for data in object_list %}
 
-<a href="/{{data.id}}"> {{ forloop.counter }}.{{ data.marka }}-{{ data.model }}-{{ data.rodzaj_pojazdu }}</a><br/>
+<a href="{{data.id}}"> {{ forloop.counter }}.{{ data.marka }}-{{ data.model }}-{{ data.rodzaj_pojazdu }}</a><br/>
 
 {% endfor %}
 
