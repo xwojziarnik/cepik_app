@@ -3,13 +3,6 @@
 {% block title %}Lista pojazdów{% endblock %}
 
 {% block content %}
-<p><h6>Jeśli chcesz:</h6></p>
-    <ul>
-    <li>Zobaczyć dokładne informacje jakiegoś pojazdu, wpisz jego nr id w adres przeglądarki. Na przykład: 127.0.0.1:8000/vehicles/1</li>
-    <li>Zaktualizować dane konkretnego pojazdu, dopisz jego nr id oraz /update/, np.: 127.0.0.1:8000/vehicles/1/update/</li>
-    <li>Usunąć konkretny pojazd, dopisz jego nr id oraz /delete/, np.: 127.0.0.1:8000/vehicles/1/delete/</li>
-    </ul>
-
 <p><h2>Lista Pojazdów</h2></p>
 
 {% for data in object_list %}
