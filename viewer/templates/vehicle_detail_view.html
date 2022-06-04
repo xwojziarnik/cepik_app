@@ -1,21 +1,21 @@
 {% extends "base.html" %}
 
-{% block title %}detail_view_vihicle{% endblock %}
+{% block title %}Pojazdy{% endblock %}
 
 {% block content %}
-<h2>Dane pojazdu: </h2>
+<h2>Dane pojazdu:</h2>
 
-marka: {{ data.marka }} <br>
-model: {{ data.model }} <br>
-województwo: {{ data.wojewodztwo }} <br>
-rodzaj pojazdu:  {{ data.rodzaj_pojazdu }} <br>
-pochodzenie: {{ data.pochodzenie_pojazdu }} <br>
-rok produkcji: {{ data.rok_produkcji }} <br>
-pojemność skokowa: {{ data.pojemnosc_skokowa }} <br>
-dopuszczalna masa całkowita: {{ data.dmc }} <br>
-liczba miejsc:  {{ data.liczba_miejsc }} <br>
-paliwo:  {{ data.rodzaj_paliwa }} <br>
-hak:  {{ data.hak }} <br>
-kierownica po prawej: {{ data.kierownica_po_prawej }}
+<p>Marka: {{ data.marka }}</p>
+<p>Model: {{ data.model }}</p>
+<p>Województwo: {{ data.wojewodztwo }}</p>
+<p>Rodzaj pojazdu: {{ data.rodzaj_pojazdu }}</p>
+<p>Pochodzenie pojazdu: {{ data.pochodzenie_pojazdu }}</p>
+<p>Rok produkcji: {{ data.rok_produkcji }}</p>
+<p>Pojemność skokowa: {{ data.pojemnosc_skokowa }}</p>
+<p>Dopuszczalna masa całkowita: {{ data.dmc }}</p>
+<p>Liczba miejsc: {{ data.liczba_miejsc }}</p>
+<p>Rodzaj paliwa: {{ data.rodzaj_paliwa }}</p>
+<p>Hak: {{ data.hak }}</p>
+<p>Kierownica po prawej: {{ data.kierownica_po_prawej }}</p>
 
 {% endblock %}

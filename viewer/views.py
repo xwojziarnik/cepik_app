@@ -20,6 +20,8 @@ def driving_licenses(request):
 def about(request):
     return render(request, template_name='about.html')
 
+def team(request):
+    return render(request, template_name='team.html')
 
 def interesting_facts():
     """
