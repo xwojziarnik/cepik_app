@@ -10,7 +10,7 @@ class Voivodeship(models.Model):
 
 
 class Vehicle(models.Model):
-    d = models.ManyToManyField
+    # id = models.ManyToManyField
     id_cepik = models.IntegerField(default=0)
     marka = models.CharField(max_length=45, null=True)
     model = models.CharField(max_length=45, null=True)

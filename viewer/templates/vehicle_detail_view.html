@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}list_view_vihicle{% endblock %}
+
+{% block content %}
+<h2>Dane pojazdu: </h2>
+
+{{ data.marka }} <br>
+{{ data.model }} <br>
+{{ data.wojewodztwo }} <br>
+{{ data.rodzaj_pojazdu }} <br>
+{{ data.pochodzenie_pojazdu }} <br>
+{{ data.rok_produkcji }} <br>
+{{ data.pojemnosc_skokowa }} <br>
+{{ data.dmc }} <br>
+{{ data.liczba_miejsc }} <br>
+{{ data.rodzaj_paliwa }} <br>
+{{ data.hak }} <br>
+{{ data.kierownica_po_prawej }}
+
+{% endblock %}

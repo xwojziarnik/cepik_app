@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}update{% endblock %}
+
+{% block content %}
+<h2> Usuń pojazd:  </h2>
+
+<form method="POST">
+
+    {% csrf_token %}
+    Napewno chcesz usunąć ten pojazd? <br>
+    {{ data.marka }}-- {{ data.model }} <br>
+    <input type="submit" value="TAK" />
+    <a href="/"> Anuluj</a>
+
+
+
+</form>
+
+{% endblock %}

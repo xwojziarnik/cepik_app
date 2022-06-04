@@ -35,16 +35,16 @@ def download_data():
     choose = input('type 1(vehicles) or 2(driving_licenses): ')
     if choose == '1':
         for voivo in voivodeships:
-            for page in range(1, 3):   # API limits - 100 calling/ one minute
+            for page in range(1, 7):   # API limits - 100 calling/ one minute
                 if page % 2 == 0:       # 100 result per page
                     print('hold')       # next page needs to wait 60 seconds
                     time.sleep(60)
                 try:
-                    url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}&data-od=20220403&page={page}'
+                    url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}&data-od=20220501&page={page}'
                     print(f'voivodeship {voivo}')
                     print(f'page {page}')
                     download_vehicles(url)
-                except IndexError:
+                except (IndexError, KeyError, TimeoutError):
                     break
 
     elif choose == '2':
@@ -54,7 +54,7 @@ def download_data():
                     url = f'https://api.cepik.gov.pl/prawa-jazdy?filter[wojewodztwo-kod]={voivo}&page={page}'
                     print(voivo)
                     download_licences(url)
-                except IndexError:
+                except (IndexError, KeyError):
                     break
     else:
         print('wrong input')
