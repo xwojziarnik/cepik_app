@@ -3,6 +3,9 @@
 {% block title %}Lista pojazdów{% endblock %}
 
 {% block content %}
+
+<p>Aby dodać pojazd, <a href="{% url 'create_vehicle' %}">kliknij</a></p>
+
 <p><h2>Lista Pojazdów</h2></p>
 
 {% for data in object_list %}
