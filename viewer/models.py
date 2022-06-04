@@ -30,7 +30,7 @@ class Vehicle(models.Model):
         return f'{self.marka}-{self.model}-{self.rok_produkcji}-{self.rodzaj_paliwa}.'
 
 
-class Driving_licenses(models.Model):
+class Driving_licenses(models.Model):   # next time use CamelCase convention (-> DrivingLicenses)
     id_cepik = models.CharField(max_length=45, null=False)
     data_uprawnien = models.CharField(max_length=45, null=False)
     id_wojewodztwa = models.IntegerField(default=0, null=False)

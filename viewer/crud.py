@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.forms import ModelForm
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from viewer.models import Vehicle, Driving_licenses
+from viewer.models import Vehicle
 
 
 class VehicleForm(ModelForm):
@@ -44,8 +44,8 @@ class VehicleListView(ListView):
 
 
 def vehicle_detail_view(request, id):
-    context = {}
-    context['data'] = Vehicle.objects.get(id=id)
+    context = dict()
+    context['data'] = Vehicle.objects.get(id=id)    # type: ignore
     return render(request, 'vehicle_detail_view.html', context)
 
 
@@ -62,8 +62,8 @@ def vehicle_update_view(request, id):
 
 
 def vehicle_delete_view(request, id):
-    context = {}
-    context['data'] = Vehicle.objects.get(id=id)
+    context = dict()
+    context['data'] = Vehicle.objects.get(id=id)    # type: ignore
     obj = get_object_or_404(Vehicle, id=id)
     if request.method == 'POST':
         obj.delete()

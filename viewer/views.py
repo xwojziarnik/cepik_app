@@ -3,28 +3,32 @@ import random
 from django.contrib import messages
 from django.forms import ModelForm
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.views.generic import ListView
-
 from viewer.models import Vehicle, Driving_licenses
 
 # Create your views here.
+
 
 def home(request):
     messages.success(request, interesting_facts())
     return render(request, template_name='home.html')
 
+
 def vehicles(request):
     return render(request, template_name='vehicles.html')
+
 
 def driving_licenses(request):
     return render(request, template_name='driving_licenses.html')
 
+
 def about(request):
     return render(request, template_name='about.html')
 
+
 def team(request):
     return render(request, template_name='team.html')
+
 
 def interesting_facts():
     """
@@ -69,6 +73,7 @@ def interesting_facts():
     fact_eight = f"Mężczyźni w wieku 40 lat i więcej stanowią {round(math_result_age_over_m, 2)}% kierowców."
     return random.choice([fact_one, fact_two, fact_three, fact_four, fact_five, fact_six, fact_seven, fact_eight])
 
+
 class DrivingLicenses(ModelForm):
     class Meta:
         model = Driving_licenses
@@ -87,4 +92,3 @@ class DrivingLicensesListView(ListView):
     model = Driving_licenses
     paginate_by = 10
     ordering = 'id_wojewodztwa', 'data_uprawnien'
-
