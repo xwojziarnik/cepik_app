@@ -18,8 +18,8 @@
 <p>Hak: {{ data.hak }}</p>
 <p>Kierownica po prawej: {{ data.kierownica_po_prawej }}</p><br>
 <form action="/vehicles/{{data.id}}/update">
-    <input type="submit" value="Edytuj" />
+    <input type="submit" class="btn btn-success" value="Edytuj" />
 </form><form action="/vehicles/{{data.id}}/delete">
-    <input type="submit" value="Usuń" />
+    <input type="submit" class="btn btn-success" value="Usuń" />
 </form>
 {% endblock %}
