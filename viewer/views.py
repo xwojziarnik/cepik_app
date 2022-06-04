@@ -22,6 +22,9 @@ def about(request):
 
 
 def interesting_facts():
+    """
+    The function was responsible for displaying random facts extracted from the database.
+    """
     petrol_cars = Vehicle.objects.filter(rodzaj_paliwa='BENZYNA').count()
     rope_cars = Vehicle.objects.filter(rodzaj_paliwa='OLEJ NAPĘDOWY').count()
     gas_cars = Vehicle.objects.filter(rodzaj_paliwa__contains='GAZ').count()
