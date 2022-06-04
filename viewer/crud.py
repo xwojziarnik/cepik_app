@@ -55,7 +55,7 @@ def vehicle_update_view(request, id):
     form = VehicleForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
-        return HttpResponseRedirect('/'+id)
+        return HttpResponseRedirect('/vehicles/')
     context['form'] = form
 
     return render(request, 'vehicle_update_view.html', context)
@@ -67,6 +67,6 @@ def vehicle_delete_view(request, id):
     obj = get_object_or_404(Vehicle, id=id)
     if request.method == 'POST':
         obj.delete()
-        return HttpResponseRedirect('/')
+        return HttpResponseRedirect('/vehicles/')
 
     return render(request, 'vehicle_delete_view.html', context)
