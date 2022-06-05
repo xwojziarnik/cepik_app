@@ -12,6 +12,7 @@ class VehicleForm(ModelForm):
               ('10', 'PODLASKIE'), ('11', 'POMORSKIE'), ('12', 'ŚLĄSKIE'), ('13', 'ŚWIĘTOKRZYSKIE'),
               ('14', 'WARMIŃSKO-MAZURSKIE'), ('15', 'WIELKOPOLSKIE'), ('16', 'ZACHODNIOPOMORSKIE'))
     wojewodztwo = forms.ChoiceField(choices=choice)
+
     class Meta:
         model = Vehicle
         fields = [
