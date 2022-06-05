@@ -56,7 +56,7 @@ def vehicle_detail_view(request, id):
 
 
 def vehicle_update_view(request, id):
-    context = {}
+    context = dict()
     obj = get_object_or_404(Vehicle, id=id)
     form = VehicleForm(request.POST or None, instance=obj)
     if form.is_valid():
