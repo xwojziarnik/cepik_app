@@ -10,7 +10,7 @@
 
 {% for data in object_list %}
 
-<p></pr><a href="{{data.id}}"> {{ forloop.counter }}.{{ data.marka }}-{{ data.model }}-{{ data.rodzaj_pojazdu }}</a></p>
+<p></pr><a href="{{data.id}}"> {{ forloop.counter0|add:page_obj.start_index }}.{{ data.marka }}-{{ data.model }}-{{ data.rodzaj_pojazdu }}</a></p>
 
 {% endfor %}
 
