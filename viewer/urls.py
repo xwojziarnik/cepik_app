@@ -16,5 +16,4 @@ urlpatterns = [
     path('vehicles/<id>/', crud.vehicle_detail_view, name='detail_view_vehicle'),
     path('vehicles/<id>/update/', crud.vehicle_update_view, name='update_view_vehicle'),
     path('vehicles/<id>/delete/', crud.vehicle_delete_view, name='delete_view_vehicle'),
-
 ]

@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django import forms
 from django.urls import reverse_lazy
 from django.views.generic import ListView
-from viewer.models import Vehicle, Driving_licenses
+from viewer.models import Vehicle
 
 
 class VehicleForm(ModelForm):
@@ -12,6 +12,7 @@ class VehicleForm(ModelForm):
               ('10', 'PODLASKIE'), ('11', 'POMORSKIE'), ('12', 'ŚLĄSKIE'), ('13', 'ŚWIĘTOKRZYSKIE'),
               ('14', 'WARMIŃSKO-MAZURSKIE'), ('15', 'WIELKOPOLSKIE'), ('16', 'ZACHODNIOPOMORSKIE'))
     wojewodztwo = forms.ChoiceField(choices=choice)
+
     class Meta:
         model = Vehicle
         fields = [
@@ -50,13 +51,13 @@ class VehicleListView(ListView):
 
 
 def vehicle_detail_view(request, id):
-    context = {}
-    context['data'] = Vehicle.objects.get(id=id)
+    context = dict()
+    context['data'] = Vehicle.objects.get(id=id)    # type: ignore
     return render(request, 'vehicle_detail_view.html', context)
 
 
 def vehicle_update_view(request, id):
-    context = {}
+    context = dict()
     obj = get_object_or_404(Vehicle, id=id)
     form = VehicleForm(request.POST or None, instance=obj)
     if form.is_valid():
@@ -68,8 +69,8 @@ def vehicle_update_view(request, id):
 
 
 def vehicle_delete_view(request, id):
-    context = {}
-    context['data'] = Vehicle.objects.get(id=id)
+    context = dict()
+    context['data'] = Vehicle.objects.get(id=id)    # type: ignore
     obj = get_object_or_404(Vehicle, id=id)
     if request.method == 'POST':
         obj.delete()
