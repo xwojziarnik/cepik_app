@@ -1,11 +1,18 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.forms import ModelForm
+from django import forms
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from viewer.models import Vehicle
 
 
 class VehicleForm(ModelForm):
+    choice = (('1', 'DOLNOŚLĄSKIE'), ('2', 'KUJAWSKO-POMORSKIE'), ('3', 'LUBELSKIE'), ('4', 'LUBUSKIE'),
+              ('5', 'ŁÓDZKIE'), ('6', 'MAŁOPOLSKIE'), ('7', 'MAZOWIECKIE'), ('8', 'OPOLSKIE'), ('9', 'PODKARPACKIE'),
+              ('10', 'PODLASKIE'), ('11', 'POMORSKIE'), ('12', 'ŚLĄSKIE'), ('13', 'ŚWIĘTOKRZYSKIE'),
+              ('14', 'WARMIŃSKO-MAZURSKIE'), ('15', 'WIELKOPOLSKIE'), ('16', 'ZACHODNIOPOMORSKIE'))
+    wojewodztwo = forms.ChoiceField(choices=choice)
+
     class Meta:
         model = Vehicle
         fields = [
@@ -50,7 +57,7 @@ def vehicle_detail_view(request, id):
 
 
 def vehicle_update_view(request, id):
-    context = {}
+    context = dict()
     obj = get_object_or_404(Vehicle, id=id)
     form = VehicleForm(request.POST or None, instance=obj)
     if form.is_valid():
