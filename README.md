@@ -31,7 +31,7 @@ Also this is our project for graduate [Python od podstaw](https://sdacademy.pl/k
 
 - [x] Listing interesting facts on home page,
 - [x] CRUD on vehicles registered in Poland,
-- [x] CRUD on driving licences registered in Poland,
+- [x] Listing driving licences registered in Poland,
 
 ## Technologies & Documentation
 
