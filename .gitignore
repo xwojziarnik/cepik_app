@@ -1,7 +1,0 @@
-.idea
-venv
-cepik_app/__pycache__
-users/__pycache__
-users/migrations/__pycache__
-viewer/migrations/__pycache__
-viewer/__pycache__
