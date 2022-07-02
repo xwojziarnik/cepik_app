@@ -17,7 +17,8 @@
 <p>Liczba miejsc: {{ data.liczba_miejsc }}</p>
 <p>Rodzaj paliwa: {{ data.rodzaj_paliwa }}</p>
 <p>Hak: {{ data.hak|yesno:"Na wyposażeniu, Brak, Null" }}</p>
-<p>Kierownica po prawej: {{ data.kierownica_po_prawej|yesno:"Tak, Nie" }}</p><br>
+<p>Kierownica po prawej: {{ data.kierownica_po_prawej|yesno:"Tak, Nie" }}</p>
+<p>Data ostatniej rejestracji: {{ data.data_ostatniej_rejestracji_w_kraju }}</p><br>
 
 <form action="/vehicles/{{data.id}}/update">
     <input type="submit" class="btn btn-success" value="Edytuj" /></form><br><form action="/vehicles/{{data.id}}/delete">

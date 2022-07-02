@@ -25,6 +25,7 @@ class Vehicle(models.Model):
     rodzaj_paliwa = models.CharField(max_length=45, null=True)
     hak = models.BooleanField(default=False)
     kierownica_po_prawej = models.BooleanField(null=True)
+    data_ostatniej_rejestracji_w_kraju = models.CharField(max_length=45, null=True)
 
     def __str__(self):
         return f'{self.marka}-{self.model}-{self.rok_produkcji}-{self.rodzaj_paliwa}.'

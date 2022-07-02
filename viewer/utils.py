@@ -1,7 +1,7 @@
 """
 Hi! You are in back-end side of 'cepik_app. So, if you are a 'Front-end Team' - run away! ;)
 There are three funcs. 'Download_vehicles', 'Download_licences', and 'download_data' to
-automatic both. Running is shell.
+automatic both. Running in shell.
 Voivodeships:
 02 dolnośląskie
 04 kujawsko-pomorskie
@@ -23,6 +23,7 @@ Voivodeships:
 
 import time
 import requests
+import urllib.request
 from viewer.models import Vehicle, Driving_licenses
 
 
@@ -35,27 +36,29 @@ def download_data():
     choose = input('type 1(vehicles) or 2(driving_licenses): ')
     if choose == '1':
         for voivo in voivodeships:
-            for page in range(1, 7):   # API limits - 100 calling/ one minute
-                if page % 2 == 0:       # 100 result per page
+            for page in range(1, 20):   # API limits - 100 calling/ one minute
+                if page % 5 == 0:       # 100 result per page
                     print('hold')       # next page needs to wait 60 seconds
                     time.sleep(60)
                 try:
-                    url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}&data-od=20220501&page={page}'
+                    url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}' \
+                          f'&data-od=20220203&data-do=20220204&page={page}'
                     print(f'voivodeship {voivo}')
                     print(f'page {page}')
                     download_vehicles(url)
                 except (IndexError, KeyError, TimeoutError):
-                    break
+                    continue
 
     elif choose == '2':
         for voivo in voivodeships:
-            for page in range(1, 11):
+            for page in range(1, 219):
                 try:
                     url = f'https://api.cepik.gov.pl/prawa-jazdy?filter[wojewodztwo-kod]={voivo}&page={page}'
-                    print(voivo)
+                    print(f'voivodeship {voivo}')
+                    print(f'page {page}')
                     download_licences(url)
                 except (IndexError, KeyError):
-                    break
+                    continue
     else:
         print('wrong input')
 
@@ -77,8 +80,8 @@ def download_vehicles(url):
             requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'  # type:ignore
             url = veh['links']['self']
             response = requests.get(url)
-            vehicle = response.json()
 
+            vehicle = response.json()
             vehicle = vehicle['data']
 
             vehicle_in_database = Vehicle.objects.filter(id_cepik=vehicle['id']).exists()  # type: ignore
@@ -94,7 +97,8 @@ def download_vehicles(url):
                                liczba_miejsc=vehicle['attributes']['liczba-miejsc-ogolem'],
                                rodzaj_paliwa=vehicle['attributes']['rodzaj-paliwa'],
                                hak=vehicle['attributes']['hak'],
-                               kierownica_po_prawej=vehicle['attributes']['kierownica-po-prawej-stronie'])
+                               kierownica_po_prawej=vehicle['attributes']['kierownica-po-prawej-stronie'],
+                               data_ostatniej_rejestracji_w_kraju=vehicle['attributes']['data-ostatniej-rejestracji-w-kraju'])
                 vehs.save()
                 count += 1
                 print('done - ', count)
