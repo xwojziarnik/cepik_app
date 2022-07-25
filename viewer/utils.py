@@ -31,8 +31,10 @@ def download_data():
     """
     download data from API for all voivodeships.
     """
+    start = time.time()
     voivodeships = ['02', '04', '06', '08', '10', '12', '14', '16', '18', '20',
-                    '22', '24', '26', '28', '30', '32']  # list of voivodeships. Explanation in docstring.
+                    '22', '24', '26', '28', '30', '32']  # list of voivodeships. Explanation in
+    # docstring.
     choose = input('type 1(vehicles) or 2(driving_licenses): ')
     if choose == '1':
         for voivo in voivodeships:
@@ -42,7 +44,7 @@ def download_data():
                     time.sleep(60)
                 try:
                     url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}' \
-                          f'&data-od=20220203&data-do=20220204&page={page}'
+                          f'&data-od=20220701&data-do=20220801&page={page}'
                     print(f'voivodeship {voivo}')
                     print(f'page {page}')
                     download_vehicles(url)
@@ -53,7 +55,8 @@ def download_data():
         for voivo in voivodeships:
             for page in range(1, 219):
                 try:
-                    url = f'https://api.cepik.gov.pl/prawa-jazdy?filter[wojewodztwo-kod]={voivo}&page={page}'
+                    url = f'https://api.cepik.gov.pl/prawa-jazdy?filter[wojewodztwo-kod]={voivo}' \
+                          f'&page={page}'
                     print(f'voivodeship {voivo}')
                     print(f'page {page}')
                     download_licences(url)
@@ -61,6 +64,9 @@ def download_data():
                     continue
     else:
         print('wrong input')
+    end = time.time()
+    seconds = round(end - start)
+    print(f'it has taken {seconds} seconds.')
 
 
 def download_vehicles(url):

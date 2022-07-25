@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Ilość samochodów elektrycznych{% endblock %}
+{% block content %}
+<p>Dotyczy pojazdów zarejestrowanych w roku 2022</p>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4"></script>
+
+<canvas id="chart" width="500" height="300"></canvas>
+
+<script>
+    let ctx = document.getElementById("chart").getContext("2d");
+
+let chart = new Chart(ctx, {
+  type: "pie",
+  data: {
+     labels: ["Benzyna", "Olej Napędowy", "Energia elektryczna", "Inne"],
+     datasets: [
+        {
+          label: "Ilośc zarejestrowanych pojazdów",
+          borderColor: "#060003",
+          data: [{{ benzyna }}, {{ olej }}, {{ elektryka }}, {{ inne }}],
+          backgroundColor: ["#FCB424","#684C41","#20FF11","#4FA3A5"]
+        }
+     ]
+  },
+         hoverOffset: 5
+});
+</script>
+{% endblock %}
