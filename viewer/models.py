@@ -3,7 +3,6 @@ from django.db import models
 
 class Voivodeship(models.Model):
     wojewodztwo = models.CharField(max_length=45, null=True)
-    id_wojewodztwa = models.IntegerField(default=0, null=False)
 
     def __str__(self):
         return self.wojewodztwo
@@ -15,7 +14,7 @@ class Vehicle(models.Model):
     marka = models.CharField(max_length=45, null=True)
     model = models.CharField(max_length=45, null=True)
     id_wojewodztwa = models.IntegerField(default=0, null=False)
-    wojewodztwo = models.CharField(max_length=45, null=True)
+    wojewodztwo = models.ForeignKey('Voivodeship', on_delete=models.PROTECT, null=True)
     rodzaj_pojazdu = models.CharField(max_length=45, null=True)
     pochodzenie_pojazdu = models.CharField(max_length=45, null=True)
     rok_produkcji = models.CharField(max_length=45, null=True)
