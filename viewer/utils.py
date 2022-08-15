@@ -24,7 +24,7 @@ Voivodeships:
 import time
 import requests
 import urllib.request
-from viewer.models import Vehicle, Driving_licenses
+from viewer.models import Vehicle, Driving_licenses, Voivodeship
 
 
 def download_data():
@@ -38,18 +38,17 @@ def download_data():
     choose = input('type 1(vehicles) or 2(driving_licenses): ')
     if choose == '1':
         for voivo in voivodeships:
-            for page in range(1, 20):   # API limits - 100 calling/ one minute
-                if page % 5 == 0:       # 100 result per page
-                    print('hold')       # next page needs to wait 60 seconds
-                    time.sleep(60)
-                try:
-                    url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}' \
-                          f'&data-od=20220701&data-do=20220801&page={page}'
-                    print(f'voivodeship {voivo}')
-                    print(f'page {page}')
-                    download_vehicles(url)
-                except (IndexError, KeyError, TimeoutError):
-                    continue
+            # try:
+                url = f'https://api.cepik.gov.pl/pojazdy?wojewodztwo={voivo}&data-od=20220301' \
+                      f'&data-do=20220331&pokaz-wszystkie-pola=true'
+                print(f'voivodeship {voivo}')
+                download_vehicles(url)
+            # except (IndexError, KeyError, TimeoutError):
+            #     continue
+        end = time.time()
+        seconds = round(end - start)
+        print('All done!')
+        print(f'it has taken {seconds} seconds.')
 
     elif choose == '2':
         for voivo in voivodeships:
@@ -78,23 +77,28 @@ def download_vehicles(url):
     requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'  # type:ignore
     response = requests.get(url)
     vehicles = response.json()
-    if vehicles['data']:
-        vehicles = vehicles['data']
-        count = 0
-        for veh in vehicles:
-            requests.packages.urllib3.disable_warnings()  # type:ignore
-            requests.packages.urllib3.util.ssl_.DEFAULT_CIPHERS += ':HIGH:!DH:!aNULL'  # type:ignore
-            url = veh['links']['self']
-            response = requests.get(url)
+    # if vehicles['meta']['page'] < 2:
+    all_vehs = vehicles['meta']['count']
+    print(all_vehs)
+    # count = 0
 
-            vehicle = response.json()
-            vehicle = vehicle['data']
+    if vehicles['data']:
+        in_case_of_error = vehicles['links']['self']
+        vehicles_to_db = vehicles['data']
+        # if vehicles['meta']['page'] == 1:
+        # all_vehs = vehicles['meta']['count']
+        # print(f'Still {all_vehs-count} to download...')
+
+        # count = 0
+        for vehicle in vehicles_to_db:
 
             vehicle_in_database = Vehicle.objects.filter(id_cepik=vehicle['id']).exists()  # type: ignore
             if not vehicle_in_database:
-                vehs = Vehicle(id_cepik=vehicle['id'], id_wojewodztwa=vehicle['attributes']['wojewodztwo-kod'],
-                               wojewodztwo=vehicle['attributes']['rejestracja-wojewodztwo'],
-                               marka=vehicle['attributes']['marka'], model=vehicle['attributes']['model'],
+                vehs = Vehicle(id_cepik=vehicle['id'],
+                               id_wojewodztwa=vehicle['attributes']['wojewodztwo-kod'],
+                               # wojewodztwo=vehicle['attributes']['rejestracja-wojewodztwo'],
+                               marka=vehicle['attributes']['marka'],
+                               model=vehicle['attributes']['model'],
                                rodzaj_pojazdu=vehicle['attributes']['rodzaj-pojazdu'],
                                pochodzenie_pojazdu=vehicle['attributes']['pochodzenie-pojazdu'],
                                rok_produkcji=vehicle['attributes']['rok-produkcji'],
@@ -103,11 +107,26 @@ def download_vehicles(url):
                                liczba_miejsc=vehicle['attributes']['liczba-miejsc-ogolem'],
                                rodzaj_paliwa=vehicle['attributes']['rodzaj-paliwa'],
                                hak=vehicle['attributes']['hak'],
-                               kierownica_po_prawej=vehicle['attributes']['kierownica-po-prawej-stronie'],
-                               data_ostatniej_rejestracji_w_kraju=vehicle['attributes']['data-ostatniej-rejestracji-w-kraju'])
+                               kierownica_po_prawej=vehicle['attributes']
+                               ['kierownica-po-prawej-stronie'],
+                               data_ostatniej_rejestracji_w_kraju=vehicle['attributes']
+                               ['data-ostatniej-rejestracji-w-kraju'])
+                voivo = Voivodeship(wojewodztwo=vehicle['attributes']['rejestracja-wojewodztwo'])
                 vehs.save()
-                count += 1
-                print('done - ', count)
+                voivo.save()
+                # count += 1
+                # print(f'{count} done...')
+
+        try:
+            next_page = vehicles['links']['next']
+            download_vehicles(next_page)
+        except KeyError:
+            print('all done...')
+        except (TimeoutError, ConnectionError):
+            download_vehicles(in_case_of_error)
+        except:
+            time.sleep(20)
+            download_vehicles(in_case_of_error)
 
 
 def download_licences(url):
